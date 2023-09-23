@@ -1,1 +1,1 @@
-print("\nResultant graph\n")
+# find the minimum key of  the vertex

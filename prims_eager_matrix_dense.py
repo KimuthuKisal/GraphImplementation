@@ -29,7 +29,7 @@ def eagar_prims(matrix,start_vertex = 0):
     key[start_vertex] = 0
     parent = [-1 for x in range(nodes)]
     mst = []
-    for _ in range(nodes):
+    for i in range(nodes):
         start_node = min_key_vertex()
         visited_nodes[start_node] = True
         for end_node in range(nodes):
@@ -37,6 +37,7 @@ def eagar_prims(matrix,start_vertex = 0):
                 parent[end_node] = start_node
                 key[end_node] = matrix[start_node][end_node]
     for i in range(1,nodes):
+        print((parent[i],i,matrix[i][parent[i]]))
         mst.append((parent[i],i,matrix[i][parent[i]]))
     return mst
 
@@ -70,6 +71,7 @@ def print_resultant_mst(resultant_graph):
         resultant_matrix[resultant_graph[i][1]][resultant_graph[i][0]] = resultant_graph[i][2]
     print_graph(resultant_matrix)
 
+#main function
 if '__main__' == __name__:
     adjacency_matrix = [[0 for x in range(nodes)] for y in range(nodes)]
     generated_adjacency_matrix = generate_dense_graph(adjacency_matrix)

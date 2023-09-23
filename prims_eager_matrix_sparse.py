@@ -104,7 +104,7 @@ def print_resultant_mst(resultant_graph):
         resultant_matrix[resultant_graph[i][1]][resultant_graph[i][0]] = resultant_graph[i][2]
     print_graph(resultant_matrix)
 
-
+#main function
 if '__main__' == __name__:
     adjacency_matrix = [[0 for x in range(nodes)] for y in range(nodes)]
     generated_adjacency_matrix = generate_sparse_graph(adjacency_matrix,0)
