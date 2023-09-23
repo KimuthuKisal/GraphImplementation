@@ -1,7 +1,4 @@
 import random
-import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
 
 # define number of nodes
 nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
@@ -27,16 +24,16 @@ def generate_dense_graph():
     return graph
 
 # check whether there exists a cycle if the relevant edge is added
-def find_cycle( vititing_graph, node ):
-    if vititing_graph[node] == -1:
+def find_cycle( visiting_graph, node ):
+    if visiting_graph[node] == -1:
         return node
-    return find_cycle(vititing_graph, vititing_graph[node])
+    return find_cycle(visiting_graph, visiting_graph[node])
 
 # mark the visited node in the visiting graph
-def mark_visit( vititing_graph, start_node, end_node ):
-    start_node_set = find_cycle( vititing_graph, start_node )
-    end_node_set = find_cycle( vititing_graph, end_node )
-    vititing_graph[start_node_set] = end_node_set
+def mark_visit( visiting_graph, start_node, end_node ):
+    start_node_set = find_cycle( visiting_graph, start_node )
+    end_node_set = find_cycle( visiting_graph, end_node )
+    visiting_graph[start_node_set] = end_node_set
 
 # create minimum spanning tree
 def kruskal( undirected_graph ):
@@ -54,17 +51,17 @@ def kruskal( undirected_graph ):
     minimum_spanning_tree = []
 
     # define another list to track visited nodes
-    vititing_graph = [-1]*nodes
+    visiting_graph = [-1]*nodes
 
     for edge in edges:
         start_node, end_node, adj_weight = edge
 
         # if both nodes are not visited, append to the minimum spanning tree
-        if ( find_cycle( vititing_graph, start_node ) != find_cycle( vititing_graph, end_node ) ):
+        if ( find_cycle( visiting_graph, start_node ) != find_cycle( visiting_graph, end_node ) ):
             # if a cycle is not going to be created, append the edge to the minimum spanning tree
             minimum_spanning_tree.append( ( start_node, end_node, adj_weight ) )
             # mark the visited node
-            mark_visit( vititing_graph, start_node, end_node )
+            mark_visit( visiting_graph, start_node, end_node )
 
     return minimum_spanning_tree
 
