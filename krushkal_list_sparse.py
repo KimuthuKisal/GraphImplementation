@@ -1,7 +1,4 @@
 import random
-import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
 
 # define number of nodes
 nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
