@@ -1,6 +1,6 @@
 import random
 
-# define number of nodes
+# define number ofnodes 
 nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
 random_val_begin = 1
 random_val_end = 100

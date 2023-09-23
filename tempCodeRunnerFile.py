@@ -1,0 +1,1 @@
+print("\nResultant graph\n")

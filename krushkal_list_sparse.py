@@ -98,7 +98,6 @@ def kruskal( undirected_graph ):
 
 # visualize the graph with weights
 def print_graph(graph):
-    print("\nGraph Visualization\n")
     for i in range(nodes):
         print(i, end="")
         for j in graph[i]:
@@ -107,7 +106,6 @@ def print_graph(graph):
 
 # visualize the mst
 def print_mst(mst):
-    print("\n\nMST Visualization\n")
     for i in range(nodes):
         print(i, " => ", end="")
         for edge in mst:
@@ -122,8 +120,10 @@ if '__main__' == __name__:
     graph_generated = generate_sparse_graph()
     extra_no_of_edges = nodes//2
     graph_generated = add_edges(extra_no_of_edges)
+    print("\nGraph Visualization\n")
     print_graph(graph)
     mst = kruskal(graph)
+    print("\n\nMST Visualization\n")
     print_mst(mst)
 
 
