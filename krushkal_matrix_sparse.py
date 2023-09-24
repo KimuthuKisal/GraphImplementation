@@ -1,7 +1,8 @@
 import random
+import time
 
 # define number of nodes
-nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
+nodes = 100  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 100 nodes only
 random_val_begin = 1
 random_val_end = 100
 
@@ -109,9 +110,13 @@ if '__main__' == __name__:
     generated_adjacency_matrix = generate_sparse_graph(adjacency_matrix,0)
     print("\nGenerated graph\n")
     print_graph(generated_adjacency_matrix)
+    start_time = time.time()
     result = kruskal(generated_adjacency_matrix)
+    end_time = time.time()
+    time_range = end_time-start_time
     print("\nResultant graph\n")
     print_resultant_mst(result)
+    print("\nTime Difference : ", time_range, "\n")
 
 
 

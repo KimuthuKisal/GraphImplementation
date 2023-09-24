@@ -1,7 +1,8 @@
 import random
+import time
 
 # define number of nodes
-nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
+nodes = 100  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 100 nodes only
 random_val_begin = 1
 random_val_end = 100
 
@@ -122,8 +123,12 @@ if '__main__' == __name__:
     graph_generated = add_edges(extra_no_of_edges)
     print("\nGraph Visualization\n")
     print_graph(graph)
+    start_time = time.time()
     mst = kruskal(graph)
+    end_time = time.time()
+    time_range = end_time-start_time
     print("\n\nMST Visualization\n")
     print_mst(mst)
+    print("\nTime Difference : ", time_range, "\n")
 
 

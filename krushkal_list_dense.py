@@ -1,7 +1,8 @@
 import random
+import time
 
 # define number of nodes
-nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
+nodes = 100  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 100 nodes only
 random_val_begin = 1
 random_val_end = 100
 
@@ -37,6 +38,7 @@ def mark_visit( visiting_graph, start_node, end_node ):
 
 # create minimum spanning tree
 def kruskal( undirected_graph ):
+
     edges = []
     for node in undirected_graph:
         for (adj_node, adj_weight) in undirected_graph[node]:
@@ -62,7 +64,6 @@ def kruskal( undirected_graph ):
             minimum_spanning_tree.append( ( start_node, end_node, adj_weight ) )
             # mark the visited node
             mark_visit( visiting_graph, start_node, end_node )
-
     return minimum_spanning_tree
 
 # visualize the graph with weights
@@ -92,7 +93,11 @@ if __name__ == '__main__':
     graph = generate_dense_graph()
     print("\nGraph Visualization\n")
     print_graph(graph)
+    start_time = time.time()
     mst = kruskal(graph)
+    end_time = time.time()
+    time_range = end_time-start_time
     print("\n\nMST Visualization\n")
     print_mst(mst)
+    print("\nTime Difference : ", time_range, "\n")
                 

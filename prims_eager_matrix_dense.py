@@ -1,8 +1,9 @@
 import random
 import sys
+import time
 
 # define number ofnodes 
-nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
+nodes = 100  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 100 nodes only
 random_val_begin = 1
 random_val_end = 100
 
@@ -37,7 +38,6 @@ def eagar_prims(matrix,start_vertex = 0):
                 parent[end_node] = start_node
                 key[end_node] = matrix[start_node][end_node]
     for i in range(1,nodes):
-        print((parent[i],i,matrix[i][parent[i]]))
         mst.append((parent[i],i,matrix[i][parent[i]]))
     return mst
 
@@ -77,9 +77,13 @@ if '__main__' == __name__:
     generated_adjacency_matrix = generate_dense_graph(adjacency_matrix)
     print("\nGraph Visualization\n")
     print_graph(generated_adjacency_matrix)
+    start_time = time.time()
     mst = eagar_prims(generated_adjacency_matrix)
+    end_time = time.time()
+    time_range = end_time-start_time
     print("\n\nMST Visualization\n")
     print_resultant_mst(mst)
+    print("\nTime Difference : ", time_range, "\n")
 
 
 

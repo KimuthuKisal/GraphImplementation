@@ -1,8 +1,9 @@
 import random
 import heapq
+import time
 
 # define number of nodes
-nodes = 10  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 10 nodes only
+nodes = 100  #for 5000 nodes, it takes a huge time to create a graph, for demonstration i took 100 nodes only
 random_val_begin = 1
 random_val_end = 100
 
@@ -101,8 +102,12 @@ if '__main__' == __name__:
     graph_generated = generate_sparse_graph()
     print("\nGraph Visualization\n")
     print_graph(graph_generated)
+    start_time = time.time()
     result = lazy_prims(graph_generated)
+    end_time = time.time()
+    time_range = end_time-start_time
     print("\n\nMST Visualization\n")
     print_mst(result)
+    print("\nTime Difference : ", time_range, "\n")
 
 
